@@ -1,0 +1,38 @@
+#' Split A Vector into Columns
+#'
+#' @param x a vector
+#' @param split character. Split exactly
+#' @param reg_expr character. Split by regular expressions
+#' @param colnames optional. Column names for outcome
+#'
+#' @return A dataframe with several columns.
+#' @export
+#'
+#' @examples
+#' x=c('1a2','3a4','4a4')
+#' col_split(x,split='a')
+#' col_split(x = x,reg_expr = '[a-z]')
+col_split <- function(x,split,reg_expr,colnames){
+    if (any(is.data.frame(x),is.matrix(x),is.array(x))){
+        stop('x must be a vector')
+    }
+    x=as.vector(x)
+    if (!missing(split)){
+        f=strsplit(x = x,split = split)
+    }else if (!missing(reg_expr)){
+        f=strsplit(x = x,split = reg_expr,fixed = FALSE)
+    }
+    f2=lapply(f, function(x) data.frame(t(x)))
+    f3=do.call(plyr::rbind.fill,f2)
+    if (missing(colnames)){
+        return(f3)
+    }else{
+        if (length(colnames)>ncol(f3)){
+            message('\n',length(colnames),' colnames Vs. ',ncol(f3),' splited columns\n')
+            colnames(f3)=colnames[1:ncol(f3)]
+        }else{
+            colnames(f3)[1:length(colnames)]=colnames
+        }
+        return(f3)
+    }
+}

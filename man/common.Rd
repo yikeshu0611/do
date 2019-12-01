@@ -4,10 +4,10 @@
 \alias{common}
 \title{Find Common Objects from Vectors}
 \usage{
-common(x)
+common(...)
 }
 \arguments{
-\item{x}{must be list}
+\item{...}{must be several vectors}
 }
 \value{
 common objects
@@ -20,7 +20,6 @@ Find Common Objects from Vectors
 x1=c('a','e','d')
 x2=c('a','c','e')
 x3=c('a','e','j','d')
-x=list(x1,x2,x3)
-common(x)
+common(x1,x2,x3)
 
 }
