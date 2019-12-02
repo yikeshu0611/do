@@ -1,7 +1,7 @@
 #' Split A Vector into Columns
 #'
 #' @param x a vector
-#' @param split character. Split exactly
+#' @param split one or more characters. Split exactly
 #' @param reg_expr character. Split by regular expressions
 #' @param colnames optional. Column names for outcome
 #'
@@ -12,11 +12,21 @@
 #' x=c('1a2','3a4','4a4')
 #' col_split(x,split='a')
 #' col_split(x = x,reg_expr = '[a-z]')
+#' 
+#' #two splits
+#' df=data.frame(result=c('A, B-C',
+#'                        'A, C-D',
+#'                        'E, F-G'))
+#' col_split(x = df[,1],split = c(',','-'))
 col_split <- function(x,split,reg_expr,colnames){
     if (any(is.data.frame(x),is.matrix(x),is.array(x))){
         stop('x must be a vector')
     }
     x=as.vector(x)
+    if (length(split)>1){
+        x=Replace(data = x,from = split[-1],to=split[1])
+        split=split[1]
+    }
     if (!missing(split)){
         f=strsplit(x = x,split = split)
     }else if (!missing(reg_expr)){

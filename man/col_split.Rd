@@ -9,7 +9,7 @@ col_split(x, split, reg_expr, colnames)
 \arguments{
 \item{x}{a vector}
 
-\item{split}{character. Split exactly}
+\item{split}{one or more characters. Split exactly}
 
 \item{reg_expr}{character. Split by regular expressions}
 
@@ -25,4 +25,10 @@ Split A Vector into Columns
 x=c('1a2','3a4','4a4')
 col_split(x,split='a')
 col_split(x = x,reg_expr = '[a-z]')
+
+#two splits
+df=data.frame(result=c('A, B-C',
+                       'A, C-D',
+                       'E, F-G'))
+col_split(x = df[,1],split = c(',','-'))
 }
