@@ -23,16 +23,21 @@ col_split <- function(x,split,reg_expr,colnames){
         stop('x must be a vector')
     }
     x=as.vector(x)
-    if (length(split)>1){
-        x=Replace(data = x,from = split[-1],to=split[1])
-        split=split[1]
-    }
     if (!missing(split)){
+        if (length(split)>1){
+            x=Replace(data = x,from = split[-1],to=split[1])
+            split=split[1]
+        }
         f=strsplit(x = x,split = split)
     }else if (!missing(reg_expr)){
         f=strsplit(x = x,split = reg_expr,fixed = FALSE)
     }
-    f2=lapply(f, function(x) data.frame(t(x)))
+    f.df <- function(x){
+        df=data.frame(t(x))
+        colnames(df)=paste0('x',1:ncol(df))
+        df
+    }
+    f2=lapply(f, function(x) f.df(x))
     f3=do.call(plyr::rbind.fill,f2)
     if (missing(colnames)){
         return(f3)

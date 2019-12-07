@@ -11,7 +11,7 @@ split_expand(data, variable, sep)
 
 \item{variable}{one column name with connected values}
 
-\item{sep}{seperated symbol}
+\item{sep}{seperated symbol, which can be one or more}
 }
 \value{
 expanded dataframe or matrix
