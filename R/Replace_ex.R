@@ -44,7 +44,7 @@ Replace_ex <- function(x,from,to,pattern){
     if (!missing(pattern)){
         for (i in 1:length(pattern)) {
             from=Replace0(pattern[i],':.*')
-            from=strsplit(from,'')[[1]]
+            from=strsplit(from,',')[[1]]
             from=from[from!='[']
             from=from[from!=']']
             from=from[from!=',']
