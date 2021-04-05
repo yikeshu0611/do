@@ -1,10 +1,9 @@
 #' Replace
-#' @description There are two methords in this function. You can use repalce many objects to one by form and to. pattern can be used to one object replaced by the other one.
+#' @description There are two methods in this function. You can use repalce many objects to one by form and to. pattern can be used to one object replaced by the other one.
 #' @param data can be number, strings, verctors, dataframe or matrix.
 #' @param from replaced stings
 #' @param to replacements
 #' @param pattern like from:to
-#'
 #' @return replaced data
 #' @export
 #'

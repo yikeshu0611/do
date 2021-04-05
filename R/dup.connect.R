@@ -8,19 +8,17 @@
 #' @export
 #'
 #' @examples
+#' dup.connect(data = mtcars,id = 'am',dup.var = 'cyl')
 #' dup.connect(data = mtcars,
-#' id = 'am',
-#' dup.var = 'cyl')
-#' dup.connect(data = mtcars,
-#'             id = c('am','gear'),
-#'             dup.var = c('cyl','qsec'))
+#'              id = c('am','gear'),
+#'              dup.var = c('cyl','qsec'))
 dup.connect <- function(data,id,dup.var){
     left.check=0
     left.name=not(colnames(data),c(id,dup.var))
     if (length(left.name)==1){
         if (is.factor(data[,left.name])){
             left.check=1
-            left.names.level=levels(data[,left.name])
+            left.name.level=levels(data[,left.name])
             data[,left.name]=as.character(data[,left.name])
         }
     }
@@ -55,8 +53,8 @@ dup.connect <- function(data,id,dup.var){
     colnames(res)=dup.var
     res=equal_length(res,' ',colname = TRUE)
     if (left.check==1){
-        res[,left.names]=factor(x = res[,left.names],
-                                levels = left.names.level)
+        res[,left.name]=factor(x = res[,left.name],
+                                levels = left.name.level)
     }
     cbind(data.u,res)
 }

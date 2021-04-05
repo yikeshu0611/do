@@ -19,7 +19,6 @@
 #'              b=c(7,8,9,4,6))
 #' Replace_ex(x = a,from = c(1,2),to=5)
 #' Replace_ex(x=a,pattern = c('1:5','2:5'))
-#' Replace_ex(x=a,pattern = '[12]:5')
 Replace_ex <- function(x,from,to,pattern){
     #for vector
     re.vector<-function(x,from,to){
@@ -44,10 +43,6 @@ Replace_ex <- function(x,from,to,pattern){
     if (!missing(pattern)){
         for (i in 1:length(pattern)) {
             from=Replace0(pattern[i],':.*')
-            from=strsplit(from,',')[[1]]
-            from=from[from!='[']
-            from=from[from!=']']
-            from=from[from!=',']
             to=Replace0(pattern[i],'.*:')
             if (is.vector(x)){
                 x=re.vector(x,from,to)
