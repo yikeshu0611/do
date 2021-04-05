@@ -1,7 +1,7 @@
 Package: do
 Type: Package
 Title: Data Operator
-Version: 1.1.0.0
+Version: 1.8.0.0
 Description: Flexibly convert data between long and wide format using just two
     functions: reshape_toLong() and reshape_toWide().
 Author: Jing Zhang, Zhi Jin
@@ -11,7 +11,23 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     data.table,
-    plyr
-RoxygenNote: 6.1.1
+    plyr,
+    tmcn,
+    methods,
+    tidyselect,
+    reshape2,
+    tidyr,
+    rvest,
+    xml2,
+    crayon,
+    httr,
+    usethis,
+    desc,
+    magrittr
+RoxygenNote: 7.1.1
 URL: https://github.com/yikeshu0611/do
 BugReports: https://github.com/yikeshu0611/do/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
