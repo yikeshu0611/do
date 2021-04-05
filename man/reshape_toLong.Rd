@@ -4,7 +4,7 @@
 \alias{reshape_toLong}
 \title{Convert Wide Data to Long}
 \usage{
-reshape_toLong(data, prefix, suffix, var.names)
+reshape_toLong(data, prefix = NULL, suffix = NULL, var.names = NULL)
 }
 \arguments{
 \item{data}{wide data}

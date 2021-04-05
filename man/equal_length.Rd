@@ -4,8 +4,7 @@
 \alias{equal_length}
 \title{Equal Length}
 \usage{
-equal_length(x, suffix = " ", nchar, colname = FALSE,
-  rowname = FALSE)
+equal_length(x, suffix = " ", nchar, colname = FALSE, rowname = FALSE)
 }
 \arguments{
 \item{x}{can be number, strings, verctors, dataframe or matrix.}

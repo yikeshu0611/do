@@ -20,10 +20,8 @@ dataframe contains id and duplicated values
 Connect Duplicated Values
 }
 \examples{
+dup.connect(data = mtcars,id = 'am',dup.var = 'cyl')
 dup.connect(data = mtcars,
-id = 'am',
-dup.var = 'cyl')
-dup.connect(data = mtcars,
-            id = c('am','gear'),
-            dup.var = c('cyl','qsec'))
+             id = c('am','gear'),
+             dup.var = c('cyl','qsec'))
 }

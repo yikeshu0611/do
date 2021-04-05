@@ -2,43 +2,51 @@
 % Please edit documentation in R/reshape_toWide.R
 \name{reshape_toWide}
 \alias{reshape_toWide}
-\title{Convert Long Data to Wide}
+\title{Reshape to Wide Format}
 \usage{
-reshape_toWide(data, id, prefix, suffix, j)
+reshape_toWide(
+  data,
+  key = NULL,
+  value = NULL,
+  prefix = NULL,
+  suffix = NULL,
+  sep = "_"
+)
 }
 \arguments{
 \item{data}{long data}
 
-\item{id}{can be one or more. If id is missing, row numbers will be treated as id}
+\item{key}{column names for key, which can be one or more}
 
-\item{prefix}{prefix of value variables}
+\item{value}{column names for exchange, which can be one or more}
 
-\item{suffix}{suffix of value variables}
+\item{prefix}{column names for prefix, which can be one or more}
 
-\item{j}{the name of operated column}
+\item{suffix}{column names for suffix, which can be one or more}
+
+\item{sep}{seperation}
 }
 \value{
-wide data
+A wide data.
 }
 \description{
-Convert long data to wide.
+Reshape to Wide Format
 }
 \examples{
-df = data.frame(id = c(1,1,2,2,3,3,4,4),
-                time = c(1,2,1,2,1,2,1,2),
-                w = c(1,6,2,7,3,8,4,9),
-                h = c(5,1,6,3,7,5,8,7),
-                n = c(2,2,3,3,4,4,5,5))
-
-# prefix
-reshape_toWide(data = df,
-               id='m',
-               prefix = c('w','h'),
-               j = 'time')
-
-# suffix
-reshape_toWide(data = df,
-               id='m',
-               suffix = c('w','h'),
-               j = 'time')
+ df = data.frame(id = c(1,1,2,2,3,3,4,4),
+              time = c(1,2,1,2,1,2,1,2),
+              w = c(1,6,2,7,3,8,4,9))
+ df
+ reshape_toWide(data = df,
+             key = 'time',
+             prefix = 'w')
+ df = data.frame(id = c(1,1,2,2,3,3,4,4),
+       time = c(1,2,1,2,1,2,1,2),
+       w = c(1,6,2,7,3,8,4,9),
+       h = c(5,1,6,3,7,5,8,7),
+       n = c(2,2,3,3,4,4,5,5))
+ df
+ reshape_toWide(data = df,
+             key = 'time',
+             prefix  = c('w','h','n'))
 }

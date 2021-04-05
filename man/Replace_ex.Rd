@@ -32,5 +32,4 @@ a=data.frame(v=c(1,2,3,2,4),
              b=c(7,8,9,4,6))
 Replace_ex(x = a,from = c(1,2),to=5)
 Replace_ex(x=a,pattern = c('1:5','2:5'))
-Replace_ex(x=a,pattern = '[12]:5')
 }

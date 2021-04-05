@@ -7,7 +7,7 @@
 reverse(x)
 }
 \arguments{
-\item{x}{can be number, strings, verctors, dataframe or matrix.}
+\item{x}{can be number, strings, verctors}
 }
 \value{
 reversed string
@@ -19,9 +19,4 @@ Reverse String Order
 reverse(123)
 reverse(c(123,'abc'))
 
-df = data.frame(
-  a = c(123, 456),
-  b = c("abc", "def")
-)
-reverse(df)
 }
