@@ -1,0 +1,9 @@
+Name: Insert pipe operation
+Description: inset pipe.
+Binding: pipe
+Interactive: false
+
+Name: glue
+Description: inset glue.
+Binding: insertglue
+Interactive: false
