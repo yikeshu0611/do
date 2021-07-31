@@ -4,7 +4,7 @@
 \alias{mid}
 \title{Truncate Characters from the Inside}
 \usage{
-mid(x, start, n)
+mid(x, start, n = 1e+11)
 }
 \arguments{
 \item{x}{can be number, strings, verctors, dataframe or matrix.}

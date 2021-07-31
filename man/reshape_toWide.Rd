@@ -32,21 +32,3 @@ A wide data.
 \description{
 Reshape to Wide Format
 }
-\examples{
- df = data.frame(id = c(1,1,2,2,3,3,4,4),
-              time = c(1,2,1,2,1,2,1,2),
-              w = c(1,6,2,7,3,8,4,9))
- df
- reshape_toWide(data = df,
-             key = 'time',
-             prefix = 'w')
- df = data.frame(id = c(1,1,2,2,3,3,4,4),
-       time = c(1,2,1,2,1,2,1,2),
-       w = c(1,6,2,7,3,8,4,9),
-       h = c(5,1,6,3,7,5,8,7),
-       n = c(2,2,3,3,4,4,5,5))
- df
- reshape_toWide(data = df,
-             key = 'time',
-             prefix  = c('w','h','n'))
-}

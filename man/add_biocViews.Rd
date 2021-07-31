@@ -14,8 +14,3 @@ add_biocViews(value = "", overwrite = TRUE)
 \description{
 Add biocViews Field to Description File
 }
-\examples{
-\donttest{
-add_biocViews()
-}
-}

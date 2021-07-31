@@ -4,7 +4,7 @@
 \alias{Replace}
 \title{Replace}
 \usage{
-Replace(data, from, to, pattern)
+Replace(data, from, to, pattern, ignore.case = FALSE)
 }
 \arguments{
 \item{data}{can be number, strings, verctors, dataframe or matrix.}
@@ -14,6 +14,8 @@ Replace(data, from, to, pattern)
 \item{to}{replacements}
 
 \item{pattern}{like from:to}
+
+\item{ignore.case}{logical, whether to ignore case}
 }
 \value{
 replaced data

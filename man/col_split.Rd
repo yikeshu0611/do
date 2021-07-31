@@ -4,7 +4,7 @@
 \alias{col_split}
 \title{Split A Vector into Columns}
 \usage{
-col_split(x, split, reg_expr, colnames)
+col_split(x, split, reg_expr, colnames, cat = TRUE)
 }
 \arguments{
 \item{x}{a vector}
@@ -14,6 +14,8 @@ col_split(x, split, reg_expr, colnames)
 \item{reg_expr}{character. Split by regular expressions}
 
 \item{colnames}{optional. Column names for outcome}
+
+\item{cat}{logical, whether to show message}
 }
 \value{
 A dataframe with several columns.
