@@ -15,7 +15,11 @@
 #' paste0_columns(df)
 #' 
 paste0_columns <- function(df,collapse=','){
-    apply(df,1,paste0,collapse=collapse)
+    if (ncol(df)==1){
+        df
+    }else{
+        apply(df,1,paste0,collapse=collapse)
+    }
 }
 
 

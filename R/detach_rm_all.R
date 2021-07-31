@@ -5,7 +5,7 @@
 #' @return detach one package
 #' @export
 #'
-detach2 <- function(x){
+unlibray <- function(x){
     if (!missing(x)){
         stg=paste0('detach("package:',x,'", unload = TRUE)')
         eval(parse(text = stg))

@@ -1,22 +1,23 @@
 #' Replaced by Empty
 #' 
 #' @param data can be number, strings, verctors, dataframe or matrix.
-#' @param from replaced stings
+#' @param ... replaced stings
 #'
 #' @return replaced data
 #' @export
 #'
 #' @examples
-#' Replace0(data = 232,from = 2)
-#' Replace0(data = c(232,'a4b'),from = c(2,'.*4'))
+#' Replace0(data = 232,2)
+#' Replace0(data = c(232,'a4b'),2,'.*4')
 #' 
 #' df = data.frame(
 #'   a = c(232, 452),
 #'   b = c("nba", "cba")
 #' )
-#' Replace0(data = df, from = c(2,'a'))
+#' Replace0(data = df, 2,'a')
 #' 
-Replace0 <- function(data,from){
+Replace0 <- function(data,...){
+  from <- c(...)
   Replace1<-function(data,from,to){
     if (any(is.data.frame(data),is.matrix(data))){
       for (i in 1:ncol(data)) {

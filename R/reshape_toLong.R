@@ -7,50 +7,7 @@
 #' @param var.names names of value variables, do.value will be created as the name of value column
 #' @importFrom reshape2 melt
 #' @return long data
-#' @export
 #'
-#' @examples
-#' 
-#'  df = data.frame(
-#'    id = c(101,102,103,104),
-#'    w1 = c(1,2,3,4),
-#'    w2 = c(6,7,8,9),
-#'    h1 = c(5,6,7,8),
-#'    names = c('s1','s2','s3','s4')
-#'  )
-#'  reshape_toLong(data = df,prefix = c('w','h'))
-#'  
-#'  
-#'  # using suffix
-#'  df = data.frame(
-#'    id = c(102,103,104,105),
-#'    t1w = c(1,2,3,4),
-#'    t2w = c(6,7,8,9),
-#'    t1h = c(5,6,7,8),
-#'    t2h = c(1,3,5,7),
-#'    sex=c('female','male','male','female')
-#'  )
-#'  reshape_toLong(data = df,suffix = c('w','h'))
-#' #' 
-#' #' # using prefix and suffix together
-#'  df = data.frame(
-#'    id = c(102,103,104,105),
-#'    wt1 = c(1,2,3,4),
-#'    wt2 = c(6,7,8,9),
-#'    t1h = c(5,6,7,8),
-#'    t2h = c(1,3,5,7),
-#'    sex=c('female','male','male','female')
-#'  )
-#'  reshape_toLong(data = df,prefix = 'w',suffix = 'h')
-#'  
-#'  # using var.names
-#'  df = data.frame(
-#'    id = c(102,103,104,105),
-#'    w = c(1,2,3,4),
-#'    h = c(1,3,5,7),
-#'    sex=c('female','male','male','female')
-#'  )
-#'  reshape_toLong(data = df,var.names = c('w','h'))
 reshape_toLong <- function (data, prefix=NULL, suffix=NULL, var.names=NULL){
    if (!is.null(var.names) & is.null(prefix) & is.null(suffix)){
       melt(data = data,

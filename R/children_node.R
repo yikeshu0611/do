@@ -2,7 +2,7 @@
 #'
 #' @param ... one or more documents, nodes, or node sets.
 #' @importFrom rvest html_name html_nodes
-#' @importFrom xml2 xml_children xml_name xml_parents
+#' @importFrom xml2 xml_children
 #' @return logical value
 #' @export
 #'
@@ -75,29 +75,14 @@ all_children <- function(x, res='do not change',i=1){
             x=x0
         }
     }
-    child_loc <- ifelse(length((1:length(x))[has_children(x)])==0,0,(1:length(x))[has_children(x)])
-    child_loc
-    if (child_loc==0){
-        # no child
-        has_no <- x
-        has <- integer()
-    }else if(child_loc==1){
-        has_no <- integer()
-        has <- x
-    }else{
-        
-        has_no <- x[seq(child_loc-1)]
-        has <- x[-seq(child_loc-1)]
-    }
+    has <- x[has_children(x)]
+    has_no <- x[!has_children(x)]
     if (length(has) == 0 & length(has_no) >0){
         # all have no children
         if (i == 1){
             res=has_no
-            names(res)=sapply(has_no, function(k) paste0(rev(c(xml_name(k),xml_name(xml_parents(k)))),collapse = ';'))
         }else{
-            loc <- (length(res)+1):(length(res)+length(has_no))
-            res[loc]=has_no
-            names(res)[loc]=sapply(has_no, function(k) paste0(rev(c(xml_name(k),xml_name(xml_parents(k)))),collapse = ';'))
+            res[(length(res)+1):(length(res)+length(has_no))]=has_no
         }
         i = i + 1
         return(res)
@@ -107,28 +92,16 @@ all_children <- function(x, res='do not change',i=1){
     }else if (length(has) > 0 & length(has_no) > 0){
         if (i == 1){
             res=has_no
-            names(res)=sapply(has_no, function(k) paste0(rev(c(xml_name(k),xml_name(xml_parents(k)))),collapse = ';'))
         }else{
-            loc <- (length(res)+1):(length(res)+length(has_no))
-            res[loc]=has_no
-            names(res)[loc]=sapply(has_no, function(k) paste0(rev(c(xml_name(k),xml_name(xml_parents(k)))),collapse = ';'))
+            res[(length(res)+1):(length(res)+length(has_no))]=has_no
         }
         i = i + 1
-        if (length(has)==1){
-            x=xml_children(has)
-        }else{
-            x=c(xml_children(has[1]),has[2:length(has)])
-        }
-        return(all_children(x = x,
+        return(all_children(x = xml_children(has),
                             res = res,
                             i=i))
     }else if (length(has) > 0 & length(has_no) == 0){
-        if (length(has)==1){
-            x=xml_children(has)
-        }else{
-            x=c(xml_children(has[1]),has[2:length(has)])
-        }
-        return(all_children(x = x,
+        
+        return(all_children(x = xml_children(has),
                             res = res,
                             i=i))
     }

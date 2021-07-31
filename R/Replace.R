@@ -4,6 +4,7 @@
 #' @param from replaced stings
 #' @param to replacements
 #' @param pattern like from:to
+#' @param ignore.case logical, whether to ignore case
 #' @return replaced data
 #' @export
 #'
@@ -20,28 +21,33 @@
 #'         from = 2,to = 1,
 #'         pattern = c('a:e','b:h'))
 #' 
-Replace <- function(data,from,to,pattern){
-  Replace1<-function(data,from,to){
-    if (any(is.data.frame(data),is.matrix(data))){
-      for (i in 1:ncol(data)) {
-        data[,i]=gsub(from,to,data[,i])
-      }
-    }else{
-      data=gsub(from,to,data)
-    }
-    data
-  }
+Replace <- function(data,from,to,pattern,ignore.case=FALSE){
+  
   if (all(!missing(from),!missing(to))){
+    
     for (i in 1:length(from)) {
-      data=Replace1(data,from[i],to)
+      fromi <- gsub('\\(','\\\\(',from[i])
+      data=Replace1(data,fromi,to,ignore.case=ignore.case)
     }
   }
   if (!missing(pattern)){
     for (j in 1:length(pattern)) {
-      from=gsub(":.*","",pattern[j])
-      to=gsub(".*:","",pattern[j])
-      data=Replace1(data,from,to)
+      from=gsub(":.*","",pattern[j],ignore.case=ignore.case)
+      from <- gsub('\\(','\\\\(',from)
+      to=gsub(".*:","",pattern[j],ignore.case=ignore.case)
+      data=Replace1(data,from,to,ignore.case=ignore.case)
     }
   }
 data
+}
+
+Replace1<-function(data,from,to,ignore.case=FALSE){
+  if (any(is.data.frame(data),is.matrix(data))){
+    for (i in 1:ncol(data)) {
+      data[,i]=gsub(from,to,data[,i],ignore.case = ignore.case)
+    }
+  }else{
+    data=gsub(from,to,data,ignore.case=ignore.case)
+  }
+  data
 }

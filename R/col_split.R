@@ -4,7 +4,7 @@
 #' @param split one or more characters. Split exactly
 #' @param reg_expr character. Split by regular expressions
 #' @param colnames optional. Column names for outcome
-#'
+#' @param cat logical, whether to show message
 #' @return A dataframe with several columns.
 #' @export
 #'
@@ -18,7 +18,7 @@
 #'                        'A, C-D',
 #'                        'E, F-G'))
 #' col_split(x = df[,1],split = c(',','-'))
-col_split <- function(x,split,reg_expr,colnames){
+col_split <- function(x,split,reg_expr,colnames,cat=TRUE){
     if (any(is.data.frame(x),is.matrix(x),is.array(x))){
         stop('x must be a vector')
     }
@@ -43,7 +43,7 @@ col_split <- function(x,split,reg_expr,colnames){
         return(f3)
     }else{
         if (length(colnames)>ncol(f3)){
-            message('\n',length(colnames),' colnames Vs. ',ncol(f3),' splited columns\n')
+            if (cat) message('\n',length(colnames),' colnames Vs. ',ncol(f3),' splited columns\n')
             colnames(f3)=colnames[1:ncol(f3)]
         }else{
             colnames(f3)[1:length(colnames)]=colnames

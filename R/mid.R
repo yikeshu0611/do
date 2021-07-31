@@ -16,7 +16,7 @@
 #' )
 #' mid(df,2,1)
 #' mid(df,2,-2)
-mid <- function(x,start,n){
+mid <- function(x,start,n=100000000000){
   if (n < 0){
     right(left(x,start),abs(n))
   }else if(n >0) {

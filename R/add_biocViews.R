@@ -5,10 +5,6 @@
 #' @importFrom usethis ui_done ui_field ui_value proj_get
 #' @export
 #'
-#' @examples
-#' \donttest{
-#' add_biocViews()
-#' }
 add_biocViews <- function(value='',overwrite=TRUE){
     value <- as.character(value)
     curr <- desc::desc_get('biocViews', file = proj_get())[[1]]
