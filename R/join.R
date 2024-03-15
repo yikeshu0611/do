@@ -1,3 +1,6 @@
+# Make sure [.data.table is dispatched
+.datatable.aware <- TRUE
+
 #' @title Join two dataframes together
 #' @description Join two dataframes by the same id column.
 #' @details join_inner(), join_full(), join_left(), join_right() and join_out() are five
